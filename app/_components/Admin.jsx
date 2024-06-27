@@ -2,7 +2,7 @@ import React from 'react'
 
 function Admin() {
   return (
-    <div>
+    <div id='contact'>
         <div className="flex flex-row bg-black text-white justify-evenly mt-10">
         <h1 className="text-2xl p-3">Contact Us</h1>
         <div className="flex items-center">

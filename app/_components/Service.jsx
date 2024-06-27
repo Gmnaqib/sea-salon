@@ -6,7 +6,7 @@ import React from 'react'
 
 function Service() {
   return (
-    <div className=''>
+    <div id='services'>
       <h1 className='text-5xl text-center md:mt-10'>Our Services</h1>
       <p className='text-gray-600 text-center text-sm md:mt-4 2xl:mt-6'>Indulge in our top-tier services: expert haircuts and styling, meticulous manicure and pedicure, <br/> and rejuvenating facial treatments.</p>
 

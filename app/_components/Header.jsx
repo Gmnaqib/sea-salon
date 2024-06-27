@@ -11,9 +11,9 @@ function Header() {
             width={150} height={80}/>
 
             <ul className='text-white flex items-center gap-8'>
-                <li className='hover:text-yellow-500'><Link href="/SignIn">Services</Link></li>      
-                <li className='hover:text-yellow-500'><Link href="/dashboard">Contact</Link></li>
-                <li><Link href="/SignIn"><Button className='2xl:mt-64 bg-white text-black mt-5 hover:border-2 hover:bg-transparent hover:text-white hover:border-white'>Book Now</Button></Link></li>           
+                <li className='hover:text-yellow-500'><Link href="#services">Services</Link></li>      
+                <li className='hover:text-yellow-500'><Link href="#contact">Contact</Link></li>
+                <li><Link href="/SignIn"><Button variant='outline' className='bg-transparent text-white'>Sign In</Button></Link></li>           
             </ul>
         </div>
     </div>

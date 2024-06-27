@@ -15,6 +15,11 @@ function Hero() {
             <Link href="/dashboard"><Button variant='outline' className='absolute top-52 mt-36 2xl:mt-64 bg-transparent text-white'>Book Now</Button></Link>
             <p className="text-white text-lg absolute top-96 mt-20 2xl:mt-64 2xl:text-2xl">At SEA Salon, we redefine beauty <br /> and elegance through <br /> personalized, exquisite care</p>
         </div>
+
+        {/* Kotak Hitam */}
+        <div className="flex flex-row bg-black text-white justify-evenly p-3">  
+            <h3 className="px-3">~ Discover True Beauty in Every Detail ~ </h3>
+    </div>
         
     </div>
   )

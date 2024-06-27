@@ -1,6 +1,7 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "./_components/Header";
+import '@smastrom/react-rating/style.css'
 
 const poppins = Poppins({
   weight: ['400', '700'], // Specify the weights you need
