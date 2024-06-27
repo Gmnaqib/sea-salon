@@ -7,6 +7,7 @@ import Marketing from "./_components/Marketing";
 import Admin from "./_components/Admin";
 import '@smastrom/react-rating/style.css'
 import RatingSystem from './_components/RatingSystem';
+import Footer from './_components/Footer';
 
 
 
@@ -19,6 +20,7 @@ export default function Home() {
       <Marketing/>
       <RatingSystem/>
       <Admin/>
+      <Footer/>
     </div>
   );
 }

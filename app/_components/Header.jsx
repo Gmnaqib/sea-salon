@@ -5,7 +5,7 @@ import React from 'react'
 
 function Header() {
   return (
-    <div className='relative'>
+    <div id='about' className='relative'>
         <div className='absolute  w-full flex items-center gap-10 justify-between p-6 px-16 z-10'>
             <Image src='/logos.png' alt='logo'
             width={150} height={80}/>
