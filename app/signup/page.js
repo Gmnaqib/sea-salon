@@ -1,8 +1,12 @@
 import React from 'react'
+import MainHeader from '../_components/MainHeader'
 
 function page() {
   return (
-    <div>sign up</div>
+    <div>
+      <MainHeader/>
+
+    </div>
   )
 }
 

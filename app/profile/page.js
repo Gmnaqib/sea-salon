@@ -1,8 +1,11 @@
 import React from 'react'
+import MainHeader from '../_components/MainHeader'
 
 function page() {
   return (
-    <div>Profil</div>
+    <div>
+      <MainHeader/>
+    </div>
   )
 }
 
