@@ -1,13 +1,19 @@
-const { default: axios } = require("axios")
+const { default: axios } = require("axios");
 
-const API_KEY=process.env.NEXT_PUBLIC_STRAPI_API_KEY
 
-const axiosClients=axios.create({
+
+const API_KEY=process.env.NEXT_PUBLIC_STRAPI_API_KEY;
+
+const axiosClient=axios.create({
     baseURL:'http://localhost:1337/api',
-    headers:{
-        'Authorization':`Bearer ${API_KEY}`
+    headers: {
+        'Authorization': `Bearer ${API_KEY}`
     }
+
 })
 
+const getService=()=>axiosClient.get('services?populate=*')
 
-const getReservation=()=> axiosClients.get()
+export default{
+    getService
+}

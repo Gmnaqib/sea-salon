@@ -1,11 +1,19 @@
 'use client';
-
+import * as React from "react"
 import { useState, useEffect } from 'react';
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from "@/components/ui/label"
+import { Card, CardContent } from "@/components/ui/card"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
 
 export default function RatingSystem() {
@@ -60,21 +68,25 @@ export default function RatingSystem() {
         <h1 className="text-5xl text-center mt-10" id="services">Customer Testimonials</h1>
         <p className="text-center text-gray-600 text-sm mt-3">Discover why our clients love SEA Salon. Read their experiences and see how our exceptional <br/> services and elegant atmosphere leave them feeling pampered and beautiful</p>
 
-        <div className="flex flex-col justify-evenly mt-10">
-  <div className="flex flex-row justify-center bg-white p-5 text-ellipsis max-h-52">
-    {ratings.map((rating, index) => (
-      <div key={index} className="flex flex-col justify-center bg-white items-center w-80 shadow-xl m-2 min-h-52 max-h-52">
-        <h2 className="text-2xl px-5 pt-4 max-w-full text-wrap text-right overflow-hidden text-ellipsis whitespace-nowrap">{rating.name}</h2>
-        <p className="text-gray-600 text-sm px-5 pb-5 max-w-full text-center line-clamp-3">{rating.comment}</p>
-
-        {/* Bintang */}
-        <Rating value={rating.stars} readOnly style={{ maxWidth: 200 }} />
-      </div>
-    ))}
-  </div>
-</div>
     </div>
                             {/* Batas Tabel Rating Bintang */}
+    <div className="flex justify-center my-5">
+      <Carousel className="w-full max-w-6xl">
+        <CarouselContent className="">
+        {ratings.map((rating, index) => (
+          <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
+            <Card key={index} className="flex flex-col justify-center bg-white items-center w-80 shadow-xl m-2 min-h-52 max-h-52">
+              <h2 className="text-2xl px-5 pt-4 max-w-full text-wrap text-right overflow-hidden text-ellipsis whitespace-nowrap">{rating.name}</h2>
+              <p className="text-gray-600 text-sm px-5 pb-5 max-w-full text-center line-clamp-3">{rating.comment}</p>
+              <Rating value={rating.stars} readOnly style={{ maxWidth: 200 }} />
+            </Card>
+        </CarouselItem>
+      ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>    
+    </div>                    
 
     </div>
   );

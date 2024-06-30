@@ -25,12 +25,13 @@ function MainHeader() {
             width={150} height={80}/>
 
             <ul className='text-white flex items-center gap-8'>
+                <li className='hover:text-yellow-500'><Link href="/">Home</Link></li>
                 <li className='hover:text-yellow-500'><Link href="/#services">Services</Link></li>      
                 <li className='hover:text-yellow-500'><Link href="/#contact">Contact</Link></li>
                 
                 {user?
                 <Popover>
-                <PopoverTrigger><Button className='bg-white text-black hover:bg-white font-semibold'>{user.given_name}</Button></PopoverTrigger>
+                <PopoverTrigger asChild><Button className='bg-white text-black hover:bg-white font-semibold'>{user.given_name}</Button></PopoverTrigger>
                 <PopoverContent className='w-36'>
                 <div className="flex flex-col gap-0">
                   <Link href="/profile"><Button variant='ghost' className='p-2'>Profile</Button></Link>
