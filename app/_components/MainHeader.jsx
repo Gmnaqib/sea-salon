@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/popover"
 
 
-function Header() {
+function MainHeader() {
   const {user, permissions,getPermissions} = useKindeBrowserClient();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function Header() {
 
   return (
     <div id='about'>
-        <div className='absolute  w-full flex items-center gap-10 justify-between p-6 px-16 z-10 bg-black'>
+        <div className='w-full flex items-center gap-10 justify-between p-6 px-16 z-10 bg-black'>
             <Image src='/logos.png' alt='logo'
             width={150} height={80}/>
 
@@ -57,4 +57,4 @@ function Header() {
   )
 }
 
-export default Header
+export default MainHeader

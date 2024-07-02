@@ -68,7 +68,7 @@ function Bookform() {
       {
       userName: user.given_name + " " + user.family_name,
       serviceName: selectedService,
-      reservationDate: date.toISOString().split('T')[0], // Pastikan format tanggal benar
+      reservationDate: date.toISOString().split('T')[0], 
       reservationTime: SelectedTimeSlot,
       phone: phoneNumber
       }
@@ -119,7 +119,7 @@ function Bookform() {
                 <Input 
                     placeholder='Phone Number'
                     value={phoneNumber} // Tambahkan value untuk mengikat state
-                    onChange={(e) => setPhoneNumber(e.target.value)} // Tambahkan event handler untuk mengubah state
+                    onChange={(e) => setPhoneNumber(e.target.value)} 
                   />
                 </div>
               </div>

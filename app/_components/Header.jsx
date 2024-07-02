@@ -37,7 +37,7 @@ function Header() {
                 <ul className="flex flex-col gap-0">
                   {permissions.permissions[0] ==="admin" ?
                   <li><Link href="/dashboard"><Button variant='ghost' className='p-2'>Dashboard</Button></Link></li>
-                  :<li><Button variant='ghost' className='p-2'>My Booking</Button></li>
+                  :<li><Link href="/mybooking"><Button variant='ghost' className='p-2'>My Booking</Button></Link></li>
                   }
                   
                   <li>
