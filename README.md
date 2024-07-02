@@ -25,6 +25,9 @@ Clone the project
 ```bash
 git clone https://github.com/Gmnaqib/sea-salon.git
 ````
+```bash
+cd sea-salon
+```
 Install dependencies (Minimal NodeJS v18)
 ```bash
 npm install
@@ -36,7 +39,7 @@ npm run dev
 
 ## Tech Stack
 Client: NextJS, TailwindCSS, ShadCN\
-Server: Strapi, Postgre\
+Server: Strapi, Postgre
 
 ## Screenshot
 ![image](https://github.com/Gmnaqib/sea-salon/assets/75847261/9c552f55-5001-466e-9958-04c9241dc0c8)
