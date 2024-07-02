@@ -14,8 +14,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { useToast } from "@/components/ui/use-toast"
+
+
 
 function Dashboard() {
+  const { toast } = useToast()
   const [serviceName, setServiceName] = useState('');
   const [serviceDuration, setServiceDuration] = useState('');
   const [reservationList, setReservationList] = useState([]);
@@ -47,7 +51,10 @@ const getReservationList = () => {
     GlobalApi.addService(data).then(resp => {
       console.log(resp);
       if (resp) {
-        alert("Service added successfully");
+        toast({
+          title: "Success",
+          description: "Add Service Success",
+        })
       }
     }).catch(error => {
       console.error("Error adding service: ", error);

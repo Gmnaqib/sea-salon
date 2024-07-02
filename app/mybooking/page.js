@@ -13,7 +13,6 @@ import {
 import GlobalApi from '../_utils/GlobalApi';
 
 function myBooking() {
-
     const [reservationList, setReservationList] = useState([]);
     
     useEffect(() => {
@@ -33,7 +32,7 @@ function myBooking() {
   return (
     <div>
         <MainHeader/>
-        <h1 className='text-2xl text-center'>My Booking</h1>
+        <h1 className='text-2xl text-center m-3'>My Booking</h1>
 
         
         

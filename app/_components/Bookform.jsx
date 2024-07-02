@@ -24,8 +24,10 @@ import {
 } from "@/components/ui/select";
 import { CalendarDays } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { useToast } from "@/components/ui/use-toast"
 
 function Bookform() {
+  const { toast } = useToast()
   const [date, setDate] = useState(new Date());
   const [timeSlot, setTimeSlot] = useState([]); 
   const { user } = useKindeBrowserClient();
@@ -33,6 +35,7 @@ function Bookform() {
   const [selectedService, setSelectedService] = useState(''); // Tambahkan state untuk service yang dipilih
   const [SelectedTimeSlot, setSelecetedTimeSlot] = useState(); 
   const [phoneNumber, setPhoneNumber] = useState('');
+  
 
   useEffect(() => {
     getTime();
@@ -79,7 +82,10 @@ function Bookform() {
     GlobalApi.bookServices(data).then(resp => {
       console.log(resp);
       if (resp) {
-        alert("Booking Success");
+        toast({
+          title: "Success",
+          description: "Booking Success",
+        })
       }
     }).catch(error => {
       console.error("Error booking service: ", error);
