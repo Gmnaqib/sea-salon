@@ -13,10 +13,10 @@ import {
 
 
 function Header() {
-  const {user} = useKindeBrowserClient();
+  const {user, permissions,getPermissions} = useKindeBrowserClient();
 
   useEffect(() => {
-    console.log(user)
+    console.log(user,permissions,getPermissions())
   },[user])
 
   return (
@@ -36,7 +36,11 @@ function Header() {
                 <PopoverContent className='w-36'>
                 <ul className="flex flex-col gap-0">
                   <li><Link href="/profile"><Button variant='ghost' className='p-2'>Profile</Button></Link></li>
-                  <li><Button variant='ghost' className='p-2'>My Booking</Button></li>
+                  {permissions.permissions[0] ==="admin" ?
+                  <li><Link href="/dashboard"><Button variant='ghost' className='p-2'>Dashboard</Button></Link></li>
+                  :<li><Button variant='ghost' className='p-2'>My Booking</Button></li>
+                  }
+                  
                   <li>
                   <LogoutLink><Button variant='ghost' className='p-2'>Log Out</Button></LogoutLink>
                   </li>

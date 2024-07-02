@@ -11,7 +11,7 @@ function Footer() {
     </div>
 
     <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-white">
-    At SEA Salon, we redefine beauty and elegance through personalized, exquisite care
+      At SEA Salon, we redefine beauty and elegance through personalized, exquisite care
     </p>
 
     <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">

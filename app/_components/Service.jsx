@@ -1,7 +1,6 @@
 import { Button } from '@/components/ui/button'
-import { MoveRight } from 'lucide'
 import { ArrowRight } from 'lucide-react'
-import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 function Service() {
@@ -30,8 +29,8 @@ function Service() {
         </div>
       </div>
       <div className='flex justify-center pt-10'>
-      <Button className='items-center bg-black hover:bg-transparent hover:border-2 hover:text-black hover:border-black transition-all'>
-        More Services <ArrowRight className='ml-2'/></Button>
+      <Link href="/booking"><Button className='items-center bg-black hover:bg-transparent hover:border-2 hover:text-black hover:border-black transition-all'>
+      More Services <ArrowRight className='ml-2'/></Button></Link>
       </div>
     </div>
   )
