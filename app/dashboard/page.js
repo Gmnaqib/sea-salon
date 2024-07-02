@@ -1,50 +1,48 @@
 "use client"
-import React, { useState } from 'react'
-import MainHeader from '../_components/MainHeader'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button';
+import React, { useEffect, useState } from 'react';
+import MainHeader from '../_components/MainHeader';
 import GlobalApi from '../_utils/GlobalApi';
 
 function Dashboard() {
-  const [Addservices, setAddservice] = useState('');
-  const [AddDuration, setAddDuration] = useState('');
+  const [reservationList, setReservationList] = useState([]);
+  const [error, setError] = useState(null);
 
-  const AddServices = () => {
-    const data = {
-      service_name:Addservices,
-      service_duration:AddDuration
-    };
+  useEffect(() => {
+    getReservationList();
+  }, []);
 
-    console.log("Service data:", data);
-  
-    GlobalApi.addService(data).then(resp => {
-      console.log(resp);
-      if (resp) {
-        alert("Add Services Success");
-      }
-    }).catch(error => {
-      console.error("Error add service: ", error);
-      alert("Add Service Failed");
-    });
+  const getReservationList = () => {
+    GlobalApi.getReservation()
+      .then(resp => {
+        console.log(resp.data.data);
+        setReservationList(resp.data.data);
+      })
+      .catch(error => {
+        console.error("Error fetching data: ", error);
+        setError(error.response ? error.response.data : "Unknown error");
+      });
   };
 
+  if (error) {
+    return (
+      <div>
+        <MainHeader />
+        <h2>Error: {error.message || "Unknown error occurred"}</h2>
+        {error.details && <pre>{JSON.stringify(error.details, null, 2)}</pre>}
+      </div>
+    );
+  }
 
   return (
     <div>
-        <MainHeader/>
-        <Input placeholder="Service Name"
-        value={Addservices}
-        onChange={(e) => setAddservice(e.target.value)}/>
-
-        <Input 
-        placeholder='Duration'
-        value={AddDuration} 
-        onChange={(e) => setAddDuration(e.target.value)}/>
-
-        <Button type="button"
-        onClick={()=>AddServices()} >Submit</Button>
+      <MainHeader />
+      {reservationList.map((item) => (
+        <div key={item.id} value={item.attributes.reservationDate}>
+          <h2>{item.attributes.reservationDate}</h2>
+        </div>
+      ))}
     </div>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;

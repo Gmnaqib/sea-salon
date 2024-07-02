@@ -64,11 +64,14 @@ function Bookform() {
 
   const saveBooking = () => {
     const data = {
+      data:
+      {
       userName: user.given_name + " " + user.family_name,
       serviceName: selectedService,
       reservationDate: date.toISOString().split('T')[0], // Pastikan format tanggal benar
       reservationTime: SelectedTimeSlot,
       phone: phoneNumber
+      }
     };
 
     console.log("Booking data:", data);

@@ -35,7 +35,6 @@ function Header() {
                 <PopoverTrigger asChild><Button className='bg-white text-black hover:bg-white font-semibold'>{user.given_name}</Button></PopoverTrigger>
                 <PopoverContent className='w-36'>
                 <ul className="flex flex-col gap-0">
-                  <li><Link href="/profile"><Button variant='ghost' className='p-2'>Profile</Button></Link></li>
                   {permissions.permissions[0] ==="admin" ?
                   <li><Link href="/dashboard"><Button variant='ghost' className='p-2'>Dashboard</Button></Link></li>
                   :<li><Button variant='ghost' className='p-2'>My Booking</Button></li>

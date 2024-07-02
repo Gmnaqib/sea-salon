@@ -57,6 +57,8 @@ export default function RatingSystem() {
       rating:stars
     }
   }
+
+console.log(saveRating)
  
  GlobalApi.rateStar(data).then(resp=>{
     console.log(resp)
