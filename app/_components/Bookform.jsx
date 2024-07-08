@@ -27,15 +27,15 @@ import { Input } from '@/components/ui/input';
 import { useToast } from "@/components/ui/use-toast"
 
 function Bookform() {
-  const { toast } = useToast()
+  const { toast } = useToast();
   const [date, setDate] = useState(new Date());
   const [timeSlot, setTimeSlot] = useState([]); 
   const { user } = useKindeBrowserClient();
   const [serviceList, setServiceList] = useState([]);
-  const [selectedService, setSelectedService] = useState(''); // Tambahkan state untuk service yang dipilih
-  const [SelectedTimeSlot, setSelecetedTimeSlot] = useState(); 
+  const [selectedService, setSelectedService] = useState('');
+  const [selectedTimeSlot, setSelectedTimeSlot] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  
+  const [bookedSlots, setBookedSlots] = useState([]);
 
   useEffect(() => {
     getTime();
@@ -44,6 +44,10 @@ function Bookform() {
   useEffect(() => {
     getServiceList();
   }, []);
+
+  useEffect(() => {
+    checkBookedSlots();
+  }, [date, selectedService]);
 
   const getTime = () => {
     const timeList = [];
@@ -65,15 +69,26 @@ function Bookform() {
     });
   };
 
+  const checkBookedSlots = () => {
+    if (selectedService && date) {
+      const formattedDate = date.toISOString().split('T')[0];
+      GlobalApi.getBookedSlots(selectedService, formattedDate).then(resp => {
+        console.log("Booked slots response:", resp.data);
+        setBookedSlots(resp.data.data || []); // Pastikan bookedSlots adalah array
+      }).catch(error => {
+        console.error("Error fetching booked slots: ", error);
+      });
+    }
+  };
+
   const saveBooking = () => {
     const data = {
-      data:
-      {
-      userName: user.given_name + " " + user.family_name,
-      serviceName: selectedService,
-      reservationDate: date.toISOString().split('T')[0], 
-      reservationTime: SelectedTimeSlot,
-      phone: phoneNumber
+      data: {
+        userName: user.given_name + " " + user.family_name,
+        serviceName: selectedService,
+        reservationDate: date.toISOString().split('T')[0], 
+        reservationTime: selectedTimeSlot,
+        phone: phoneNumber
       }
     };
 
@@ -85,17 +100,21 @@ function Bookform() {
         toast({
           title: "Success",
           description: "Booking Success",
-        })
+        });
       }
     }).catch(error => {
       console.error("Error booking service: ", error);
       alert("Booking Failed");
     });
   };
-  
-    const isPastDay=(day)=>{
-        return day<new Date();
-    }
+
+  const isPastDay = (day) => {
+    return day < new Date();
+  };
+
+  const isSlotBooked = (time) => {
+    return bookedSlots.some(slot => slot.attributes.reservationTime === time);
+  };
 
   return (
     <div>
@@ -124,7 +143,7 @@ function Bookform() {
                 <div className='mt-2'>
                 <Input 
                     placeholder='Phone Number'
-                    value={phoneNumber} // Tambahkan value untuk mengikat state
+                    value={phoneNumber} 
                     onChange={(e) => setPhoneNumber(e.target.value)} 
                   />
                 </div>
@@ -132,7 +151,7 @@ function Bookform() {
 
               <div>
                 <h2 className='mb-2'>Services</h2>
-                <Select onValueChange={setSelectedService}> {/* Tambahkan onValueChange */}
+                <Select onValueChange={setSelectedService}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select a service" />
                   </SelectTrigger>
@@ -148,31 +167,31 @@ function Bookform() {
                   </SelectContent>
                 </Select>
                 <div id='timeslot' className='grid grid-cols-3'>
-                    {timeSlot?.map((item, index) => (
-                        <h2
-                        onClick={()=>setSelecetedTimeSlot(item.time)}
-                        className={`p-2 m-1 border
-                        rounded-lg text-xs text-black cursor-pointer ${item.time==SelectedTimeSlot&&'bg-black text-white'}`} key={index}>{item.time}</h2>
-                    ))}
+                  {timeSlot.map((item, index) => (
+                    <h2
+                      onClick={() => !isSlotBooked(item.time) && setSelectedTimeSlot(item.time)}
+                      className={`p-2 m-1 border rounded-lg text-xs text-black cursor-pointer ${item.time === selectedTimeSlot && 'bg-black text-white'} ${isSlotBooked(item.time) && 'bg-gray-200 cursor-not-allowed'}`}
+                      key={index}
+                      style={{ pointerEvents: isSlotBooked(item.time) ? 'none' : 'auto' }}
+                    >
+                      {item.time}
+                    </h2>
+                  ))}
                 </div>
               </div>
 
             </div>
           </DialogHeader>
           <DialogFooter className="sm:justify-end">
-          <DialogClose asChild>
-            <div className='gap-3 flex'>
+            <DialogClose asChild>
+              <div className='gap-3 flex'>
                 <div className='flex gap-3'>
-                    <Button type="button" variant="outline"
-                        className='text-red-500 border-red-500'>Close
-                    </Button>
-                    <Button type="button" disabled={!(date&&SelectedTimeSlot)}
-                    onClick={()=>saveBooking()} >Book
-                    </Button>
+                  <Button type="button" variant="outline" className='text-red-500 border-red-500'>Close</Button>
+                  <Button type="button" disabled={!(date && selectedTimeSlot)} onClick={saveBooking}>Book</Button>
                 </div>
-            </div>
-          </DialogClose>
-        </DialogFooter>
+              </div>
+            </DialogClose>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </div>

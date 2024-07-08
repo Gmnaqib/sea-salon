@@ -15,6 +15,7 @@ const rateStar = (data) => axiosClient.post('/reviews', data);
 const showrate = () => axiosClient.get('/reviews');
 const addService = (data) => axiosClient.post('/services', data);
 const getReservation = () => axiosClient.get('reservations?populate=*');
+const getBookedSlots = (serviceName, reservationDate) => axiosClient.get(`/reservations?filters[serviceName][$eq]=${serviceName}&filters[reservationDate][$eq]=${reservationDate}`);
 
 export default {
     getService,
@@ -22,5 +23,6 @@ export default {
     rateStar,
     showrate,
     addService,
-    getReservation
+    getReservation,
+    getBookedSlots
 };
