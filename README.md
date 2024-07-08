@@ -20,6 +20,48 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Run Locally
+Clone the project
+```bash
+git clone https://github.com/Gmnaqib/sea-salon.git
+````
+```bash
+cd sea-salon
+```
+Install dependencies (Minimal NodeJS v18)
+```bash
+npm install
+````
+Star Server
+```bash
+npm run dev
+```
+
+## Tech Stack
+Client: NextJS, TailwindCSS, ShadCN\
+Server: Strapi, Postgre
+
+## Screenshot
+![image](https://github.com/Gmnaqib/sea-salon/assets/75847261/9c552f55-5001-466e-9958-04c9241dc0c8)
+
+![image](https://github.com/Gmnaqib/sea-salon/assets/75847261/87f3ff6f-d91c-47e4-9c93-53ff6dd2f27b)
+
+![image](https://github.com/Gmnaqib/sea-salon/assets/75847261/2b47eace-d3b4-4024-b05c-5be9869c31a0)
+
+![image](https://github.com/Gmnaqib/sea-salon/assets/75847261/ebc956d9-25cb-40cc-896a-c9eaef5af34a)
+
+
+
+
+
+
+## Account
+|     Email             | Password           | Role |
+| --------------------- | ------------------ |------|
+| hyoukazera@gmail.com  | Adminsalon123      |Admin |
+| patinson00@gmail.com  | usersalon123       |User  |
+
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
@@ -34,3 +76,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
