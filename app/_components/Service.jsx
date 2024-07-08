@@ -29,8 +29,6 @@ function Service() {
         </div>
       </div>
       <div className='flex justify-center pt-10'>
-      <Link href="/booking"><Button className='items-center bg-black hover:bg-transparent hover:border-2 hover:text-black hover:border-black transition-all'>
-      More Services <ArrowRight className='ml-2'/></Button></Link>
       </div>
     </div>
   )
